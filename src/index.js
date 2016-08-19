@@ -124,6 +124,7 @@ module.exports = React.createClass({
     autoplayDirection                : React.PropTypes.bool,
     index                            : React.PropTypes.number,
     renderPagination                 : React.PropTypes.func,
+    pageDidChange	                 : React.PropTypes.func,
   },
 
   mixins: [TimerMixin],
@@ -150,6 +151,7 @@ module.exports = React.createClass({
       autoplayTimeout                  : 2.5,
       autoplayDirection                : true,
       index                            : 0,
+      pageDidChange                    : function(){},
     }
   },
 
@@ -352,6 +354,8 @@ module.exports = React.createClass({
       offset: offset,
       loopJump: loopJump,
     })
+    
+    this.props.pageDidChange(index);
   },
 
   /**
